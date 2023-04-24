@@ -28,7 +28,7 @@ Customer registration:	8
 
 
 Goal
-The goal of this project is to create the backend setup of a financial institution (Bank) application.
+The goal of this project is to create the backend setup of a financial institution (Bank) application where the user of the application can log in as either a admin and as a customer. As an admin, you can add new customers and get a full view of the database. As a customer you can olny view information about your current account, the loans that have been taken, available and useful information like the interest rates and  currencies 
 
 Database:
 Database Structure:
@@ -42,17 +42,15 @@ Used to store customer’s account details. Show the date the account was created 
 
 
 
-Transactions:
-All transactions done by the customer are stored in this table. Shows the transaction ID, Account sent the money, transaction medium and amount.
 Loan:
 The table serves the purpose of saving information about loans granted to the bank’s customers like amount, date issued, customer ID and branch where the loan was issued.
-Branch:
-This table saves information about the branches that the bank has and other information that are usual in service delivery in the banking sector like branch location
+Currency:
+This table saves information about the currencies that the bank offers and other information that are usual in service delivery in the banking sector like exchange rate.
 
 Application Use:
   
 Log in Admin Account
-/Admin/admin login
+http://localhost:3000/admin/admin
 METHOD: POST
 status code: 201
 Request
@@ -81,7 +79,7 @@ If data not correct
 "data": " No matching account "
 }
 Admin registration
-/admin/create admin
+http://localhost:3000/admin/create admin
 METHOD: POST
 status code: 201
 Request
@@ -106,13 +104,26 @@ Response
 
 If user is already registered
 {
-"status": 400,
+"status": 409,
 "data": "This user already exist"
 }
-GET /customers
+GET /customers 
 Retrieves a list of all customers
 Query Parameters
-ParameterTypeRequiredDescriptionidnumberyesThe customer’s  idResponse
+Parameter
+ Type
+ Required
+ Description
+ id
+ number 
+yes 
+The customer’s id
+
+
+
+
+
+Response
 {
 "status": 200,
 "data": [
@@ -132,6 +143,7 @@ ParameterTypeRequiredDescriptionidnumberyesThe customer’s  idRespons
 "Amount": "100 000",
 "Currency": PLN,
 "Date Issued": 07-09-2023,
+"Interest rate": 20%
 
 }],
 
@@ -143,7 +155,7 @@ ParameterTypeRequiredDescriptionidnumberyesThe customer’s  idRespons
 
 
 Log in Customer account
-/customer/customer Login
+http://localhost:3000/customer/customer Login
 METHOD: POST
 status code: 201
 Request
@@ -153,7 +165,7 @@ Request
 }
 Response
 {
-"status": 201,
+"status": 200 OK,
 "data": {
 "id":1,
 "userName": "userName"
@@ -179,7 +191,7 @@ If data provided is incorrect
 
 
 Customer registration:
-/customer/customer registration
+http://localhost:3000/customer/customer registration
 METHOD: POST
 status code: 201
 Request
@@ -198,7 +210,7 @@ Response
 }
 If user is already registered
 {
-"status": 400,
+"status": 409,
 "data": "This user already exist"
 }
 
@@ -208,7 +220,19 @@ If user is already registered
 GET /account details
 Retrieves a list of all customers
 Query Parameters
-ParameterTypeRequiredDescriptionidnumberyesThe customer’s  id
+Parameter
+Type
+Required
+Description
+id
+number
+yes
+The customer’s id
+
+
+
+
+
 Response
 {
 "status": 200,
