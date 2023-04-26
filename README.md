@@ -1,7 +1,7 @@
 Contents:
->-[Goal](##Goal)
->-[Database-Structure](##Database Structure)
->-[Application-APIs](##Application APIs)
+ -[Goal](##Goal)
+ -[Database-Structure](##Database Structure)
+ -[Application-APIs](##Application APIs)
 
 
 
@@ -17,35 +17,35 @@ Contents:
 
 
 
-##Goal <a name="Goal"></a>
+## Goal <a name="Goal"></a>
 The goal of this project is to create the backend setup of a financial institution (Bank) application where the user of the application can log in as either a admin and as a customer.
  As an admin, you can add new customers and get a full view of the database. As a customer you can only view information about your current account, the loans that have been taken, 
  available and useful information like the interest rates and currencies
 
->- ##Database Structure <a name='Database Structure'></a>
+- ## Database Structure <a name='Database Structure'></a>
 The project is going to be developing its database using PostgreSQL and the following schema is to be implemented:
 
->-###Customer:
+- ### Customer:
 This table stores information about the bank's customer. Contains essential information about the customer used to link the customer to their bank accounts and other services like loans. 
-###Account:
+### Account:
 Used to store customer's account details. Show the date the account was created or the account was delete and relevant information linking to the customer like customer id
 
 
 
 
->-###Loan:
+- ### Loan:
 The table serves the purpose of saving information about loans granted to the bank�s customers like amount, date issued, customer ID and branch where the loan was issued.<p>
 Currency:
 This table saves information about the currencies that the bank offers and other information that are usual in service delivery in the banking sector like exchange rate<p>.
 
-##Application Use<a name='Application APIs'></a>
+## Application Use<a name='Application APIs'></a>
   
->-###Log in Admin Account
+ - ### Log in Admin Account
 http://localhost:3000/admin/login
 METHOD: POST
 status code: 201
 Request
-
+```
 {
 "userName": "userName",
 "password": "password"
@@ -70,11 +70,14 @@ If data not correct
 "status": 400,
 "data": " No matching account "
 }
->-Admin registration
+
+```
+- ### Admin registration
 http://localhost:3000/admin/registration
 METHOD: POST
 status code: 201
 Request
+```
 {
 "userName": "newUser",
 "password": "password"
@@ -88,6 +91,7 @@ Response
 // other details
 }
 }
+```
 
 
 
@@ -95,12 +99,17 @@ Response
 
 
 If user is already registered
+```
 {
 "status": 409,
 "data": "This user already exist"
 }
--GET /customers 
- -Retrieves a list of all customers
+
+```
+- ### Retrieves a list of all customers
+http://localhost:3000/customer/registration
+  METHOD: GET 
+ 
 
 | Parameter | Type   | Required | Description  |
 |-----------|--------|----------|--------------|
@@ -108,6 +117,7 @@ If user is already registered
 
 
 Response
+```
 {
 "status": 200,
 "data": [
@@ -119,14 +129,17 @@ Response
   "Amount": "100 000",
   "Currency": PLN}]
 }]
-
--GET /loans
- -Retrieves a list of all loans
+```
+-Retrieves a list of all loans
+http://localhost:3000/admin/loans
+ METHOD: GET
+ 
 
 | Parameter | Type     | Required | Description  |
 |-----------|----------|----------|--------------|
 | `loan_id  | bigserial| Yes      | The loan's ID. |
 
+```
 "Loan": [
 {
 "Loan id": 3,
@@ -136,6 +149,7 @@ Response
 "Interest rate": 20%
 
 }]}
+```
 
 
 
@@ -144,17 +158,19 @@ Response
 
 
 
-
->-Log in Customer account
+- ### Log in Customer account
 http://localhost:3000/customer/login
 METHOD: POST
 status code: 201
 Request
+```
 {
 "userName": "userName",
 "password": "password"
 }
+```
 Response
+```
 {
 "status": 200 OK,
 "data": {
@@ -164,24 +180,27 @@ Response
 }
 }
 If not found:
+```
 {
 "status": 404,
 "data": "No_matching account"
 }
 
+```
 If data provided is incorrect
+```
 {
 "status": 400,
 "data": " No matching account "
 }
 
+```
 
 
 
 
 
-
->-Customer registration:
+- ## Customer registration:
 http://localhost:3000/customer/registration
 METHOD: POST
 status code: 201
@@ -207,8 +226,9 @@ If user is already registered
 
 
 
->-Retrieve information about customer account
-GET /account details
+- ### Retrieve information about customer account
+http://localhost:3000/customer/account
+METHOD:GET 
 
 | Parameter   | Type   | Required | Description   |
 |-------------|--------|----------|-------------- |
