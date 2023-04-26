@@ -1,18 +1,7 @@
-Contents
-Goal	2
-Database:	2
-Database Structure:	2
-Application Use:	3
-Log in Admin Account	3
-/Admin/admin login	3
-Admin registration	4
-/admin/create admin	4
-Users	5
-GET /customers	5
-Log in Customer account	7
-/customer/customer Login	7
-Customer registration:	8
-/customer/customer registration	8
+Contents:
+>-[Goal](##Goal)
+>-[Database-Structure](##Database Structure)
+>-[Application-APIs](##Application APIs)
 
 
 
@@ -27,33 +16,36 @@ Customer registration:	8
 
 
 
-Goal
-The goal of this project is to create the backend setup of a financial institution (Bank) application where the user of the application can log in as either a admin and as a customer. As an admin, you can add new customers and get a full view of the database. As a customer you can olny view information about your current account, the loans that have been taken, available and useful information like the interest rates and  currencies 
 
-Database:
-Database Structure:
+##Goal <a name="Goal"></a>
+The goal of this project is to create the backend setup of a financial institution (Bank) application where the user of the application can log in as either a admin and as a customer.
+ As an admin, you can add new customers and get a full view of the database. As a customer you can only view information about your current account, the loans that have been taken, 
+ available and useful information like the interest rates and currencies
+
+>- ##Database Structure <a name='Database Structure'></a>
 The project is going to be developing its database using PostgreSQL and the following schema is to be implemented:
 
-Customer:
-This table stores information about the bank’s customer. Contains essential information about the customer used to link the customer to their bank accounts and other services like loans. 
-Account:
-Used to store customer’s account details. Show the date the account was created or the account was delete and relevant information linking to the customer like customer id
+>-###Customer:
+This table stores information about the bank's customer. Contains essential information about the customer used to link the customer to their bank accounts and other services like loans. 
+###Account:
+Used to store customer's account details. Show the date the account was created or the account was delete and relevant information linking to the customer like customer id
 
 
 
 
-Loan:
-The table serves the purpose of saving information about loans granted to the bank’s customers like amount, date issued, customer ID and branch where the loan was issued.
+>-###Loan:
+The table serves the purpose of saving information about loans granted to the bankï¿½s customers like amount, date issued, customer ID and branch where the loan was issued.<p>
 Currency:
-This table saves information about the currencies that the bank offers and other information that are usual in service delivery in the banking sector like exchange rate.
+This table saves information about the currencies that the bank offers and other information that are usual in service delivery in the banking sector like exchange rate<p>.
 
-Application Use:
+##Application Use<a name='Application APIs'></a>
   
-Log in Admin Account
-http://localhost:3000/admin/admin
+>-###Log in Admin Account
+http://localhost:3000/admin/login
 METHOD: POST
 status code: 201
 Request
+
 {
 "userName": "userName",
 "password": "password"
@@ -78,8 +70,8 @@ If data not correct
 "status": 400,
 "data": " No matching account "
 }
-Admin registration
-http://localhost:3000/admin/create admin
+>-Admin registration
+http://localhost:3000/admin/registration
 METHOD: POST
 status code: 201
 Request
@@ -107,20 +99,12 @@ If user is already registered
 "status": 409,
 "data": "This user already exist"
 }
-GET /customers 
-Retrieves a list of all customers
-Query Parameters
-Parameter
- Type
- Required
- Description
- id
- number 
-yes 
-The customer’s id
+-GET /customers 
+ -Retrieves a list of all customers
 
-
-
+| Parameter | Type   | Required | Description  |
+|-----------|--------|----------|--------------|
+| `userId`  | string | Yes      | The user ID. |
 
 
 Response
@@ -131,21 +115,27 @@ Response
 "id": 1,
 "Name": "John",
 "Account Details": [{
-{
-"Account id": 3,
-"Amount": "100 000",
-"Currency": PLN,
-}],
+  "Account id": 3,
+  "Amount": "100 000",
+  "Currency": PLN}]
+}]
 
-"Loan": [{
+-GET /loans
+ -Retrieves a list of all loans
+
+| Parameter | Type     | Required | Description  |
+|-----------|----------|----------|--------------|
+| `loan_id  | bigserial| Yes      | The loan's ID. |
+
+"Loan": [
 {
 "Loan id": 3,
-"Amount": "100 000",
+"account_balance": "100 000",
 "Currency": PLN,
 "Date Issued": 07-09-2023,
 "Interest rate": 20%
 
-}],
+}]}
 
 
 
@@ -154,8 +144,9 @@ Response
 
 
 
-Log in Customer account
-http://localhost:3000/customer/customer Login
+
+>-Log in Customer account
+http://localhost:3000/customer/login
 METHOD: POST
 status code: 201
 Request
@@ -190,8 +181,8 @@ If data provided is incorrect
 
 
 
-Customer registration:
-http://localhost:3000/customer/customer registration
+>-Customer registration:
+http://localhost:3000/customer/registration
 METHOD: POST
 status code: 201
 Request
@@ -216,18 +207,12 @@ If user is already registered
 
 
 
-
+>-Retrieve information about customer account
 GET /account details
-Retrieves a list of all customers
-Query Parameters
-Parameter
-Type
-Required
-Description
-id
-number
-yes
-The customer’s id
+
+| Parameter   | Type   | Required | Description   |
+|-------------|--------|----------|-------------- |
+|`account_id` | string | Yes      | The account ID|
 
 
 
@@ -243,11 +228,9 @@ Response
 "Account Details": [{
 {
 "Account id": 3,
-"Amount": "100 000",
+"account_balance": "100 000",
 "Currency": PLN,
 }],
-
-
 
 
 
