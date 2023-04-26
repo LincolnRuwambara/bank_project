@@ -1,19 +1,7 @@
 Contents:
- -[Goal](##Goal)
- -[Database-Structure](##Database Structure)
- -[Application-APIs](##Application APIs)
-
-
-
-
-
-
-
-
-
-
-
-
+1. -[Goal](## Goal)
+2. -[Database-Structure](## Database Structure)
+3. -[Application-APIs](## Application APIs)
 
 
 
@@ -27,7 +15,7 @@ The project is going to be developing its database using PostgreSQL and the foll
 
 - ### Customer:
 This table stores information about the bank's customer. Contains essential information about the customer used to link the customer to their bank accounts and other services like loans. 
-### Account:
+- ### Account:
 Used to store customer's account details. Show the date the account was created or the account was delete and relevant information linking to the customer like customer id
 
 
@@ -59,13 +47,16 @@ Response
 // other details
 }
 }
-If not found:
+```
+ - ### If not found:
+ ```
 {
 "status": 404,
 "data": "No_matching account"
 }
-
-If data not correct
+```
+- ### If data not correct
+```
 {
 "status": 400,
 "data": " No matching account "
@@ -98,7 +89,7 @@ Response
 
 
 
-If user is already registered
+ - ### If user is already registered
 ```
 {
 "status": 409,
@@ -130,7 +121,7 @@ Response
   "Currency": PLN}]
 }]
 ```
--Retrieves a list of all loans
+- ### Retrieves a list of all loans
 http://localhost:3000/admin/loans
  METHOD: GET
  
@@ -150,10 +141,6 @@ http://localhost:3000/admin/loans
 
 }]}
 ```
-
-
-
-
 
 
 
@@ -179,7 +166,9 @@ Response
 // other details
 }
 }
-If not found:
+```
+
+ - ### If not found:
 ```
 {
 "status": 404,
@@ -187,7 +176,7 @@ If not found:
 }
 
 ```
-If data provided is incorrect
+ - ### if data provided is incorrect:
 ```
 {
 "status": 400,
@@ -197,14 +186,12 @@ If data provided is incorrect
 ```
 
 
-
-
-
 - ## Customer registration:
 http://localhost:3000/customer/registration
 METHOD: POST
 status code: 201
 Request
+```
 {
 "userName": "newUser",
 "password": "password"
@@ -218,13 +205,15 @@ Response
 // other details
 }
 }
-If user is already registered
+```
+ - ### If user is already registered
+ ```
 {
 "status": 409,
 "data": "This user already exist"
 }
 
-
+```
 
 - ### Retrieve information about customer account
 http://localhost:3000/customer/account
@@ -239,6 +228,7 @@ METHOD:GET
 
 
 Response
+```
 {
 "status": 200,
 "data": [
@@ -251,6 +241,7 @@ Response
 "account_balance": "100 000",
 "Currency": PLN,
 }],
+```
 
 
 
