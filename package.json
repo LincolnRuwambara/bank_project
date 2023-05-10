@@ -1,0 +1,15 @@
+{
+  "name": "bank_web_app",
+  "version": "1.0.0",
+  "description": "Node.js on Docker",
+  "author": "Lincoln Ruwambara <lincolnruwambara@gmail.com>",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "gp": "0.0.1",
+    "pg": "^8.10.0"
+  }
+}
