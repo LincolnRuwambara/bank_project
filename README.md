@@ -1,7 +1,7 @@
 Contents:
-1. -[Goal](## Goal)
-2. -[Database-Structure](## Database Structure)
-3. -[Application-APIs](## Application APIs)
+1. - [Goal](## Goal)
+2. - [Database-Structure](## Database Structure)
+3. - [Application-APIs](## Application APIs)
 
 
 
@@ -99,6 +99,7 @@ Response
 ```
 - ### Retrieves a list of all customers
 http://localhost:3000/customer/registration
+ 
   METHOD: GET 
  
 
