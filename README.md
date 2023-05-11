@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 Contents:
 1. -[Goal](## Goal)
 2. -[Database-Structure](## Database Structure)
@@ -249,3 +250,7 @@ Response
 
 
 
+=======
+The goal is to create a financial institution ie BANK and the project aims to impliment the following functions 
+ How much money can the bank's cutomer take as a loan based on the customer's salary and income.The currency that the custmoer can get from the bank and the yearly interest.
+>>>>>>> Stashed changes
