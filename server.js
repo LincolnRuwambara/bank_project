@@ -8,6 +8,6 @@ res.send('Banking Application');
 
 });
 app.use(express.json());
-app.use('/api/v1/customer',customerRoutes);
+app.use('/customer',customerRoutes);
 
 app.listen(port,() =>console.log(`app listening on port ${port}`));

@@ -28,81 +28,37 @@ Currency:
 This table saves information about the currencies that the bank offers and other information that are usual in service delivery in the banking sector like exchange rate<p>.
 
 ## Application Use<a name='Application APIs'></a>
-  
- - ### Log in Admin Account
-http://localhost:3000/admin/login
-METHOD: POST
-status code: 201
-Request
-```
-{
-"userName": "userName",
-"password": "password"
-}
-Response
-{
-"status": 201,
-"data": {
-"id":1,
-"userName": "userName"
-// other details
-}
-}
-```
- - ### If not found:
- ```
-{
-"status": 404,
-"data": "No_matching account"
-}
-```
-- ### If data not correct
-```
-{
-"status": 400,
-"data": " No matching account "
-}
 
-```
-- ### Admin registration
-http://localhost:3000/admin/registration
-METHOD: POST
-status code: 201
-Request
-```
-{
-"userName": "newUser",
-"password": "password"
-}
-Response
-{
-"status": 201,
-"data": {
-"id":2,
-"userName": "newUser"
-// other details
-}
-}
-```
-
-
-
-
-
-
- - ### If user is already registered
-```
-{
-"status": 409,
-"data": "This user already exist"
-}
-
-```
 - ### Retrieves a list of all customers
-http://localhost:3000/customer/registration
+http://localhost:3000/customers
  
   METHOD: GET 
- 
+Response
+```
+{
+"status": 200,
+"data": [
+  {
+"id": 1,
+"Name": "John",
+"Account Details": [{
+  "Account id": 3,
+  "Amount": "100 000",
+  "Currency": PLN}]
+}
+,
+{
+"id": 2,
+"Name": "Marry",
+"Account Details": [{
+  "Account id": 65,
+  "Amount": "104 500",
+  "Currency": PLN}]
+}]
+```
+- ### Retrieves customer by id
+http://localhost:3000/customers/id:
+METHOD: GET  
 
 | Parameter | Type   | Required | Description  |
 |-----------|--------|----------|--------------|
@@ -123,32 +79,29 @@ Response
   "Currency": PLN}]
 }]
 ```
-- ### Retrieves a list of all loans
-http://localhost:3000/admin/loans
+
+
+- ### Retrieves a loan by id
+http://localhost:3000/loan/id:
  METHOD: GET
  
 
 | Parameter | Type     | Required | Description  |
 |-----------|----------|----------|--------------|
-| `loan_id  | bigserial| Yes      | The loan's ID. |
+| `loan_id` | bigserial| Yes      | The loan's ID. |
 
+Response
 ```
-"Loan": [
-{
+"status":200,
+"data":[
 "Loan id": 3,
 "account_balance": "100 000",
 "Currency": PLN,
 "Date Issued": 07-09-2023,
-"Interest rate": 20%
-
-}]}
+"Interest rate": 20%,]
 ```
-
-
-
-
 - ### Log in Customer account
-http://localhost:3000/customer/login
+http://localhost:3000/login
 METHOD: POST
 status code: 201
 Request
@@ -186,10 +139,8 @@ Response
 }
 
 ```
-
-
 - ## Customer registration:
-http://localhost:3000/customer/registration
+http://localhost:3000/register
 METHOD: POST
 status code: 201
 Request
@@ -214,43 +165,6 @@ Response
 "status": 409,
 "data": "This user already exist"
 }
-
-```
-
-- ### Retrieve information about customer account
-http://localhost:3000/customer/account
-METHOD:GET 
-
-| Parameter   | Type   | Required | Description   |
-|-------------|--------|----------|-------------- |
-|`account_id` | string | Yes      | The account ID|
-
-
-
-
-
-Response
-```
-{
-"status": 200,
-"data": [
-{
-"id": 1,
-"Name": "John",
-"Account Details": [{
-{
-"Account id": 3,
-"account_balance": "100 000",
-"Currency": PLN,
-}],
-```
-
-
-
-
-
-
-
 =======
 The goal is to create a financial institution ie BANK and the project aims to impliment the following functions 
  How much money can the bank's cutomer take as a loan based on the customer's salary and income.The currency that the custmoer can get from the bank and the yearly interest.
