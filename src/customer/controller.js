@@ -10,47 +10,45 @@ pool.query(queries.getCustomers,(error,results)=>{
 
 };
 
+
+//query to get a customer's information using the customer ID
+
 const getCustomerById=(req,res) =>{
  const customer_id= parseInt(req.params.id);
-//query to get a customer's information using the customer ID
- pool.query(quiries.getCustomerById,[customer_id],(error,results)=>{
+
+ pool.query(queries.getCustomerById,[customer_id],(error,results)=>{
   if (error) throw error;
   res.status(200).json(results.rows);   
 });
 };
-//query to ADD a  new customerusing the customer
+//query to a  new customer using the customer
 const addCustomer=(req,res) =>{
  const{first_name,last_name,customer_id,city,dob,salary,mobile_no}= req.body;
-//checking if customer id already exists
-pool.query(quiries.checkIdExists,[customer_id],(error,results)=>{
+//check if  customer already exists to be added
 
-if(results.rows.length){
-  res.send("The customer ID already exists");
-}
 // adding customer info if customer_id doesnt exist
-pool.query(queries.addCustomer,[first_name,last_name,customer_id,city,dob,salary,mobile_no],(error,results)=>{
+pool.query(queries.addCustomer,[first_name,last_name,city,dob,salary,mobile_no],(error,results)=>{
    if (error) throw error;
    res.status(201).send("Customer saved successfully!");
 });
-});
+
+
+};
 
 // deleting a customer using customer_id
-};
 const deleteCustomer = (req,res)=>{
  const customer_id= parseInt(req.params.customer_id);
 
 pool.query(queries.getCustomerById,[customer_id],(error,results)=>{
-   if (constNoCustomer=!results.rows.length) {
-
-    res.send("Customer Does Not exist in the database")
-
-
+  const noCustomer= !results.rows.length ;
+  if (noCustomer) {
+    res.send("Customer Does Not exist in the database");
    }
 
    pool.query(queries.deleteCustomer,[customer_id],(error,results)=>{
 
      if(error) throw error;
-     res.command(200).send("Customer Successfully saved");
+     res.command(200).send("Customer Successfully Deleted");
 
 
    });
