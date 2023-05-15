@@ -1,0 +1,5 @@
+node_modules
+bank.sql
+databaseSchema.png
+npm-debug.log
+.vscode
