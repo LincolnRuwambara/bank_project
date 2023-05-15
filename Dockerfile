@@ -3,7 +3,8 @@ FROM node:17
 # Creating  app directory
 WORKDIR /usr/src/app
 #Copy the json file
-COPY *.json ./
+
+COPY    package*.json  ./
 #INSTALL MODULES
 RUN  npm install
 
